@@ -1,0 +1,24 @@
+{
+  "name": "wapc-io",
+  "version": "0.0.1",
+  "description": "waPC website and technical documentation.",
+  "main": "none.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wapc/wapc.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wapc/wapc.github.io/issues"
+  },
+  "homepage": "https://github.com/wapc/wapc.github.io#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "autoprefixer": "^9.8.6",
+    "postcss-cli": "^7.1.2"
+  }
+}

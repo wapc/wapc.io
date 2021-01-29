@@ -1,0 +1,50 @@
+.td-navbar-cover .navbar-brand {
+  color: $primary;
+}
+.navbar-bg-onscroll .navbar-brand {
+  color: #ffffff;
+}
+
+.td-navbar-cover .navbar-nav .nav-link {
+  color: $primary;
+  text-shadow: none;
+}
+
+.td-navbar-cover .navbar-nav .nav-link:hover {
+  color: $secondary;
+  text-shadow: none;
+}
+
+.td-navbar-cover .navbar-nav .td-search-input {
+  border: 1px $primary solid;
+  color: $primary;
+}
+
+.nav-link .active {
+  color: $secondary;
+}
+
+.td-navbar-cover .navbar-nav .td-search-input::placeholder {
+  color: $secondary;
+}
+
+.navbar-bg-onscroll .navbar-nav .nav-link {
+  color: #ffffff;
+}
+
+
+.o-logo {
+  width: 33%;
+  max-width: 300px;
+}
+
+.td-cover-block {
+  background: url(/img/hero-bg.jpg) repeat-x center;
+  background-size: 100% 100%;
+  color: #333;
+}
+
+.td-cover-block .display-2 {
+  max-width: 70%;
+  margin: 20px auto;
+}
