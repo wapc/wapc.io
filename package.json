@@ -8,16 +8,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wapc/wapc.github.io.git"
+    "url": "git+https://github.com/wapc/wapc.io.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/wapc/wapc.github.io/issues"
+    "url": "https://github.com/wapc/wapc.io/issues"
   },
-  "homepage": "https://github.com/wapc/wapc.github.io#readme",
+  "homepage": "https://github.com/wapc/wapc.io#readme",
   "dependencies": {},
   "devDependencies": {
+    "netlify-cli": "^3.4.2",
     "autoprefixer": "^9.8.6",
     "postcss-cli": "^7.1.2"
   }
