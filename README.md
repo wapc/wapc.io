@@ -1,40 +1,33 @@
 # The waPC website and documentation
 
-This repository houses the assets used to build and deploy the gRPC website, available at https://wapc.io. The site is built using the [Hugo](https://gohugo.io) static site generator. Check out the [Hugo quick start](https://gohugo.io/getting-started/quick-start/) for a quick intro.
+This repository houses the assets used to build and deploy the waPC website,
+available at https://wapc.io. The site is built using the
+[Hugo](https://gohugo.io) static site generator. Check out the
+[Hugo quick start](https://gohugo.io/getting-started/quick-start/) for a quick
+intro.
 
 ## Prerequisites
 
-- **[Hugo, extended version][hugo-install]**
-- **[nvm][]**, the Node Version Manager
+- **[Hugo, extended](https://gohugo.io/)**
 
 ## Serving the site locally
 
-First install NPM packages:
+Initialize git submodules
 
 ```console
-$ npm install
+$ git submodile update --init --recursive
 ```
 
-To build and locally serve this site, you can use **any one** of the following
-commands:
+Run hugo
 
-- Build and serve using [Hugo][], via `make`:
+```console
+$ hugo serve
+```
 
-  ```console
-  $ make serve
-  ```
+_alternately_
 
-- Build and serve using [GitHub pages](https://pages.github.com/) using [Hugo](https://gohugo.io/hosting-and-deployment/hosting-on-github/):
+Run hugo via `make` and use `make` for other useful tasks.
 
-  ```console
-  $ TODO
-  ```
-
-## Publishing the site
-
-TODO
-
-## Site content
-
-All of the [Markdown](https://www.markdownguide.org) content used to build the
-site's documentation, blog, etc. is in the [content](content) directory.
+```console
+$ make serve
+```
