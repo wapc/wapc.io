@@ -1,24 +1,45 @@
-
 ---
-title: "Documentation"
-linkTitle: "Docs"
+title: "Documentation & Links"
+linkTitle: "Docs & Links"
 weight: 20
 menu:
   main:
     weight: 20
 ---
 
-{{% pageinfo %}}
-This is a placeholder page that shows you how to use this template site.
-{{% /pageinfo %}}
+## waPC Host Implementations
 
+- [Rust](github.com/wapc/wapc-rust)
+- [Go](https://github.com/wapc/wapc-go)
+- [JavaScript](https://github.com/wapc/wapc-js)
 
-This section is where the user documentation for your project lives - all the information your users need to understand and successfully use your project. 
+## waPC Guest Implementations
 
-For large documentation sets we recommend adding content under the headings in this section, though if some or all of them don’t apply to your project feel free to remove them or add your own. You can see an example of a smaller Docsy documentation site in the [Docsy User Guide](https://docsy.dev/docs/), which lives in the [Docsy theme repo](https://github.com/google/docsy/tree/master/userguide) if you'd like to copy its docs section. 
+- [Rust](https://github.com/wapc/wapc-guest-rust)
+- [TinyGo](https://github.com/wapc/wapc-guest-tinygo)
+- [AssemblyScript](https://github.com/wapc/as-guest)
+- [Zig](https://github.com/wapc/wapc-guest-zig)
 
-Other content such as marketing material, case studies, and community updates should live in the [About](/about/) and [Community](/community/) pages.
+## WIDL
 
-Find out how to use the Docsy theme in the [Docsy User Guide](https://docsy.dev/docs/). You can learn more about how to organize your documentation (and how we organized this site) in [Organizing Your Content](https://docsy.dev/docs/best-practices/organizing-content/).
+- [WIDL specification](https://github.com/wapc/widl-spec)
+- [WIDL parser](https://github.com/wapc/widl-js)
+- [Code generator](https://github.com/wapc/widl-codegen-js)
 
+## Other links
 
+### Projects built off waPC
+
+- [WasmCloud](https://wasmcloud.com)
+
+### Community tools
+
+- [WIDL Validator](https://jsoverson.github.io/widl-validator/)
+- [Online waPC loader](https://vino.dev/wasm/loader/)
+
+### Tutorials / Articles
+
+- [WasmCloud's waPC reference](https://wasmcloud.dev/reference/wapc/)
+- [Building WebAssembly platforms with waPC](https://vino.dev/blog/building-webassembly-platforms-with-wapc/)
+- [Getting started with waPC and WebAssembly](https://vino.dev/blog/getting-started-with-wapc-and-webassembly/)
+- [Building a waPC host in nodejs](https://vino.dev/blog/building-a-wapc-host-in-nodejs/)

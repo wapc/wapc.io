@@ -13,17 +13,17 @@ linkTitle = "wPC"
 </h2>
 
 <div class="mx-auto">
-	<a class="btn btn-lg btn-primary mr-3 mb-4" href='{{ "/docs"| relURL }}'>
+	<a class="btn btn-lg btn-primary mr-3 mb-4" href='/docs'>
 		Learn More <i class="fas fa-arrow-alt-circle-right ml-2"></i>
 	</a>
 	<a class="btn btn-lg btn-secondary mr-3 mb-4" href="https://github.com/wapc/cli" target="_blank">
 		Download <i class="fab fa-github ml-2 "></i>
 	</a>
 	<p class="lead mt-5">
-The WebAssembly Procedure Call project — waPC for short — is a suite of tools and specifications that allow a native code to make, receive, and forward arbitrary calls to or from WebAssembly guests.
+The WebAssembly Procedure Call project — waPC for short — is a suite of tools and specifications that allow native code to make, receive, and forward arbitrary calls to or from WebAssembly guests.
 </p>
 <p>
-WaPC has host implementations for Rust, Go, Node.js, and browser environments and guest libraries with code generators for Rust, Go, and AssemblyScript. 
+WaPC has host implementations for Rust, Go, Node.js, and browser environments and guest libraries for Rust, Go, and AssemblyScript. 
 </p>
 
 {{< blocks/link-down color="info" >}}
@@ -38,30 +38,20 @@ WaPC has host implementations for Rust, Go, Node.js, and browser environments an
 
 {{< blocks/section color="dark" >}}
 
-{{% blocks/feature icon="fa-cogs" title="WIDL & waPC CLI" %}} The Web Assembly
-Interface Definition Language (WIDL) givse you a compact way of describing a
-WASM module's interface.
+{{% blocks/feature icon="fas fa-cogs" title="The waPC protocol"%}}
+The core of waPC is a protocol for communicating into and out of WebAssembly.
 
-The waPC CLI turns that WIDL into working code.
-
-(Rust, Go, or AssemblyScript supported out-of-the-box).
-
+Use waPC for everything from small libraries to [distributed application platforms](https://wasmcloud.com).
 {{% /blocks/feature %}}
 
-{{% blocks/feature icon="fas fa-warehouse" title="waPC Host & Guest"%}}
+{{% blocks/feature icon="fas fa-puzzle-piece" title="waPC Hosts & Guests"%}}
+waPC hosts manage the lifecycle and communication of WebAssembly guests.
 
-The waPC host and guest libraries manage the communication protocol between
-native code and WASM modules.
-
-With waPC, you can interact directly with WebAssembly results or act as a broker between arbitrary WebAssembly and native code without deserializing anything.
-
+Hosts and guests give you a universal interface for dynamic behavior in both native and WebAssembly.
 {{% /blocks/feature %}}
 
-{{% blocks/feature icon="fab fa-twitter" title="Web Assembly Engine Providers"%}}
-WaPC is not tied to any wasm runtime. Hosts can use any web assembly interpreter
-and you can even mix engines within the same host.
-
-Wasm3 and Wasmtime are provided for you.
+{{% blocks/feature icon="fas fa-tools" title="WIDL & the waPC CLI"%}}
+Use the WebAssembly Interface Definition Language (WIDL) to define your WebAssembly's schema and the `wapc` CLI to generate all the code except your business logic.
 
 {{% /blocks/feature %}}
 
@@ -75,11 +65,11 @@ Wasm3 and Wasmtime are provided for you.
 
 {{<blocks/section>}}
 
-<div class="col-6 text-center"><img src='/img/wapc-arch.png' width="100%"></div>
+<div class="col-6 text-center"><img src='/img/wapc-arch.svg' width="100%"></div>
 <div class="col-6">
  <dl>
   <dt>waPC Host</dt>
-  <dd>Once initialized with a Web Assembly intepreter and a wasm binary, the wapc-host library can start executing functions in the wasm guest. The host and guest operate over the waPC communication protocol to satisfy bindings for compiled languages. This protocol takes an operation name and input data, serializes it, and calls the receiving waPC method in the wasm guest.</dd>
+  <dd>Once initialized with a WebAssembly intepreter and a wasm binary, the wapc-host library can start executing functions in the wasm guest. The host and guest operate over the waPC communication protocol to satisfy bindings for compiled languages. This protocol takes an operation name and input data, serializes it, and calls the receiving waPC method in the wasm guest.</dd>
   <dt>waPC Guest</dt>
   <dd>The wasm binary — built with the wapc-guest bindings — accepts the waPC call, deserializes the input, executes the requested operation by name, serializes the return value, and passes it back over the waPC protocol back to the host.</dd>
   <dt>WIDL</dt>
@@ -97,7 +87,8 @@ Wasm3 and Wasmtime are provided for you.
 <h1>Example schema.widl</h1>
 <style>
   .highlight pre{
-     height:25em;
+    font-size:smaller; 
+     height:38em;
      overflow-y:scroll;
      border-radius:4px;
   }
@@ -113,27 +104,18 @@ interface {
 
 "Represents an HTTP request, handled by the guest module"
 type Request {
-  "The HTTP method."
   method: string
-  "The path."
   path: string
-  "The raw query string."
   queryString: string
-  "The HTTP request headers."
   header: {string : string}
-  "The payload of the HTTP request"
   body: bytes?
 }
 
-"Represents an HTTP response that the guest module would like to return in response to a request command."
+"HTTP response returned from a request."
 type Response {
-  "The HTTP status code."
   statusCode: u32 = 200
-  "The HTTP status name."
   status: string = "OK"
-  "The HTTP request headers."
   header: {string : string}
-  "The payload of the HTTP response"
   body: bytes?
 }
 
