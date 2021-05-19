@@ -32,7 +32,6 @@
   color: #ffffff;
 }
 
-
 .o-logo {
   width: 33%;
   max-width: 300px;
@@ -47,4 +46,8 @@
 .td-cover-block .display-2 {
   max-width: 80%;
   margin: 20px auto;
+}
+
+.bg-dark a {
+  color: $light;
 }
