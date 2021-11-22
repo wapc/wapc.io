@@ -23,13 +23,89 @@ linkTitle = "wPC"
 The WebAssembly Procedure Call project — waPC for short — is a suite of tools and specifications that allow native code to make, receive, and forward arbitrary calls to or from WebAssembly guests.
 </p>
 <p>
-WaPC has host implementations for Rust, Go, Node.js, and browser environments and guest libraries for Rust, Go, and AssemblyScript. 
+WaPC has host implementations for Rust, Go, Node.js, and browser environments and guest libraries for Rust, Go, and AssemblyScript.
 </p>
 
 {{< blocks/link-down color="info" >}}
 
 </div>
 {{< /blocks/cover >}}
+
+{{% blocks/section color="light" type="section" %}}
+
+<h2 class=mx-auto>Quickstart</h2>
+{{% /blocks/section %}}
+
+<section class="row td-box td-box--white td-box--gradient td-box--height-auto">
+  <div class="col">
+    <div class="row section">
+      <div class="step">
+        <h3>Step 1: Install the wapc CLI</h3>
+        <div class="install step-details">
+{{< tabpane >}}
+{{< tab header="Windows" >}}
+> powershell -Command "iwr -useb https://raw.githubusercontent.com/wapc/cli/master/install/install.ps1 | iex"
+{{< /tab >}}
+
+{{< tab header="Mac OS" >}}
+$ curl -fsSL https://raw.githubusercontent.com/wapc/cli/master/install/install.sh | /bin/bash
+{{< /tab >}}
+
+{{< tab header="Linux" >}}
+$ wget -q https://raw.githubusercontent.com/wapc/cli/master/install/install.sh -O - | /bin/bash
+{{< /tab >}}
+
+{{< tab header="Homebrew" >}}
+$ brew install wapc/tap/wapc
+{{< /tab >}}
+{{< /tabpane >}}
+
+</div>
+</div>
+<div class="step">
+<h3>Step 2: Generate a new project</h3>
+<div class="install step-details">
+{{< tabpane >}}
+{{< tab header="AssemblyScript" >}}
+$ wapc new assemblyscript hello_world_as
+{{< /tab >}}
+
+{{< tab header="Rust" >}}
+$ wapc new rust hello_world_rust
+{{< /tab >}}
+
+{{< tab header="TinyGo" >}}
+$ wapc new tinygo hello_world_tinygo
+$ cd hello_world_tinygo
+$ make codegen
+$ go mod tidy
+{{< /tab >}}
+{{< /tabpane >}}
+
+</div>
+</div>
+<div class="step">
+<h3>Step 3: Build</h3>
+<div class="install step-details">
+<div class="code-toolbar">
+<pre
+              class="language-en"
+            ><code class=" language-en">$ make</code></pre>
+<div class="toolbar">
+<div class="toolbar-item"><button>Copy</button></div>
+</div>
+</div>
+</div>
+</div>
+<div class="step">
+<h3>Step 4: Run</h3>
+<div class="install step-details"></div>
+{{< wapc-loader >}}
+</div>
+</div>
+
+  </div>
+</section>
 
 {{% blocks/lead color="primary" %}}
 
@@ -76,52 +152,9 @@ Use the WebAssembly Interface Definition Language (WIDL) to define your WebAssem
   <dd>Your WIDL definition is the description of your wasm module's interface. It includes the exposed operations, the input types, return types, namespaces, and more. The waPC CLI uses a widl definition to generate Rust, Go, or AssemblyScript code. <a href="https://github.com/wapc/widl-spec">(see more)</a></dd>
   <dt>waPC CLI</dt>
   <dd>The waPC command line tool automates the process of creating new projects and generating waPC-compliant integration code.</dd>
-</dl> 
+</dl>
 </div>
 
-{{</blocks/section>}}
-
-{{<blocks/section color="dark">}}
-
-<div class="container-fluid col-8">
-<h1>Example schema.widl</h1>
-<style>
-  .highlight pre{
-    font-size:smaller; 
-     height:38em;
-     overflow-y:scroll;
-     border-radius:4px;
-  }
-  </style>
-
-```go
-namespace "my:httpserver"
-
-interface {
-  "Handles an HTTP request"
-  handleRequest{request: Request}: Response
-}
-
-"Represents an HTTP request, handled by the guest module"
-type Request {
-  method: string
-  path: string
-  queryString: string
-  header: {string : string}
-  body: bytes?
-}
-
-"HTTP response returned from a request."
-type Response {
-  statusCode: u32 = 200
-  status: string = "OK"
-  header: {string : string}
-  body: bytes?
-}
-
-```
-
-</div>
 {{</blocks/section>}}
 
 {{< blocks/section color="light">}}

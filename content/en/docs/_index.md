@@ -30,7 +30,8 @@ menu:
 
 ### Projects built off waPC
 
-- [WasmCloud](https://wasmcloud.com)
+- [Vino](https://vino.dev)
+- [Submit yours](https://github.com/wapc/wapc.io/edit/main/content/en/docs/_index.md)
 
 ### Community tools
 
@@ -39,7 +40,6 @@ menu:
 
 ### Tutorials / Articles
 
-- [WasmCloud's waPC reference](https://wasmcloud.dev/reference/wapc/)
 - [Building WebAssembly platforms with waPC](https://vino.dev/blog/building-webassembly-platforms-with-wapc/)
 - [Getting started with waPC and WebAssembly](https://vino.dev/blog/getting-started-with-wapc-and-webassembly/)
 - [Building a waPC host in nodejs](https://vino.dev/blog/building-a-wapc-host-in-nodejs/)
