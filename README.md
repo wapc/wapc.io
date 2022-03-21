@@ -15,7 +15,7 @@ intro.
 Initialize git submodules
 
 ```console
-$ git submodile update --init --recursive
+$ git submodule update --init --recursive
 ```
 
 Run hugo
