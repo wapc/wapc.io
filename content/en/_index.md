@@ -19,6 +19,9 @@ linkTitle = "wPC"
 	<a class="btn btn-lg btn-secondary mr-3 mb-4" href="https://github.com/wapc/cli" target="_blank">
 		Download <i class="fab fa-github ml-2 "></i>
 	</a>
+	<a class="btn btn-lg btn-secondary mr-3 mb-4" href="https://gitter.im/wapc/community" target="_blank">
+		Chat <i class="fab fa-comments ml-2 "></i>
+	</a>
 	<p class="lead mt-5">
 The WebAssembly Procedure Call project — waPC for short — is a suite of tools and specifications that allow native code to make, receive, and forward arbitrary calls to or from WebAssembly guests.
 </p>
