@@ -31,6 +31,7 @@ menu:
 ### Projects built off waPC
 
 - [Vino](https://vino.dev)
+- [Kubewarden](https://kubewarden.io)
 - [Submit yours](https://github.com/wapc/wapc.io/edit/main/content/en/docs/_index.md)
 
 ### Community tools
