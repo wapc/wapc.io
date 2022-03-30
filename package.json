@@ -19,7 +19,7 @@
   "dependencies": {},
   "devDependencies": {
     "autoprefixer": "^10.4.4",
-    "netlify-cli": "^8.1.8",
+    "netlify-cli": "^9.15.0",
     "postcss": "^8.4.12",
     "postcss-cli": "^9.1.0"
   }
