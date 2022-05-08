@@ -3,8 +3,8 @@ publish = "public"
 command = "git submodule update --init --recursive --depth 1 && make production-build"
 
 [build.environment]
-HUGO_VERSION = "0.80.0"
-NODE_VERSION = "14"
+HUGO_VERSION = "0.98.0"
+NODE_VERSION = "16"
 
 [context.branch-deploy]
 command = "git submodule update --init --recursive --depth 1 && make preview-build"
