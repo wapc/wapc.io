@@ -1,4 +1,4 @@
-HUGO_VERSION =  0.80.0
+HUGO_VERSION =  0.98.0
 
 DRAFT_ARGS = --buildDrafts --buildFuture
 BUILD_ARGS = --minify
