@@ -9,13 +9,13 @@ menu:
 
 ## waPC Host Implementations
 
-- [Rust](github.com/wapc/wapc-rust)
+- [Rust](https://github.com/wapc/wapc-rs)
 - [Go](https://github.com/wapc/wapc-go)
 - [JavaScript](https://github.com/wapc/wapc-js)
 
 ## waPC Guest Implementations
 
-- [Rust](https://github.com/wapc/wapc-guest-rust)
+- [Rust](https://github.com/wapc/wapc-rs/tree/master/crates/wapc-guest)
 - [TinyGo](https://github.com/wapc/wapc-guest-tinygo)
 - [AssemblyScript](https://github.com/wapc/as-guest)
 - [Zig](https://github.com/wapc/wapc-guest-zig)
