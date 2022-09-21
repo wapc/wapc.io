@@ -18,7 +18,7 @@
   "homepage": "https://github.com/wapc/wapc.io#readme",
   "dependencies": {},
   "devDependencies": {
-    "autoprefixer": "^10.4.11",
+    "autoprefixer": "^10.4.12",
     "netlify-cli": "^11.8.0",
     "postcss": "^8.4.16",
     "postcss-cli": "^10.0.0"
