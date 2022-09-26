@@ -1,0 +1,21 @@
+.features {
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+  width: 100%;
+}
+
+.featureSvg {
+  height: 200px;
+  width: 200px;
+}
+
+.hiw-img {
+  height: 100%;
+  width: 100%;
+}
+
+.break {
+  background-color:#6250E7;
+}
+

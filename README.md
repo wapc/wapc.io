@@ -1,33 +1,44 @@
 # The waPC website and documentation
 
 This repository houses the assets used to build and deploy the waPC website,
-available at https://wapc.io. The site is built using the
-[Hugo](https://gohugo.io) static site generator. Check out the
-[Hugo quick start](https://gohugo.io/getting-started/quick-start/) for a quick
-intro.
+available at https://wapc.io.
 
-## Prerequisites
+This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
 
-- **[Hugo, extended](https://gohugo.io/)**
+### Installation
 
-## Serving the site locally
-
-Initialize git submodules
-
-```console
-$ git submodule update --init --recursive
+```
+$ yarn
 ```
 
-Run hugo
+### Local Development
 
-```console
-$ hugo serve
+```
+$ yarn start
 ```
 
-_alternately_
+This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
 
-Run hugo via `make` and use `make` for other useful tasks.
+### Build
 
-```console
-$ make serve
 ```
+$ yarn build
+```
+
+This command generates static content into the `build` directory and can be served using any static contents hosting service.
+
+### Deployment
+
+Using SSH:
+
+```
+$ USE_SSH=true yarn deploy
+```
+
+Not using SSH:
+
+```
+$ GIT_USER=<Your GitHub username> yarn deploy
+```
+
+If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
