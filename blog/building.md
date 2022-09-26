@@ -120,4 +120,4 @@ Here is the compiled wasm running live in the browser:
 
 ### Writing your own waPC hosts and guests
 
-That's it! The next step is to start working with actual code yourself. Check out our guest and host tutorial over at [Getting started with waPC](/blog/getting-started-with-wapc-and-webassembly/).
+That's it! The next step is to start working with actual code yourself. Check out our guest and host tutorial over at [Getting started with waPC](/blog/getting-started/).
