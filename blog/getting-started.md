@@ -66,12 +66,12 @@ interface {
 }
 ```
 
-The namespace helps describe a scope for objects in Apex but note that Apex does nothing on its own. The `wapc` CLI's code generation uses Apex but the templates are configurable. I point this out to highlight that `namespace` is a convention and the implementation is undefined. In terms of this tutorial it means that `namespace` has no effect. WasmCloud — one of the first major consumers of waPC — uses `[project name]:[module name]` for its namespaces so I'll do the same and use `candle:tutorial` but you're free to do what you want.
+The namespace helps describe a scope for objects in Apex but note that Apex does nothing on its own. The `wapc` CLI's code generation uses Apex but the templates are configurable. I point this out to highlight that `namespace` is a convention and the implementation is undefined. In terms of this tutorial it means that `namespace` has no effect. WasmCloud — one of the first major consumers of waPC — uses `[project name]:[module name]` for its namespaces so I'll do the same and use `tutorial` but you're free to do what you want.
 
 The `interface` block describes the operations we expose. The default Apex template describes an operation named `sayHello` that takes a string for the `name` parameter and returns a string as its output. Let's change that method to `toLowercase` and add another for `toUppercase` with the same parameter name. This is what we have so far:
 
 ```idl
-namespace "candle:tutorial"
+namespace "tutorial"
 
 interface {
   toUppercase(name: string): string
@@ -193,5 +193,5 @@ If something _did_ go wrong then hopefully the error messages will help. If not,
 
 ## Writing your own host
 
-WaPC guests are only half the equation, the next step is making your own host that leverages the functionality. Head over to [Building a waPC Host in Node.js](/blog/building-a-wapc-host-in-nodejs/) when you're ready to get started!
+WaPC guests are only half the equation, the next step is making your own host that leverages the functionality. Head over to [Building a waPC Host in Node.js](/blog/nodejs/) when you're ready to get started!
 
