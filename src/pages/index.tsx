@@ -58,8 +58,8 @@ function HomepageHeader() {
           </Link>&nbsp;&nbsp;
           <Link
             className="button button--primary button--lg"
-            to="https://github.com/wapc/cli">
-            Download
+            to="/docs/spec">
+            Specification
           </Link>
         </div>
       </div>

@@ -79,7 +79,7 @@ const config = {
           },
           {
             type: 'doc',
-            docId: 'protocols', 
+            docId: 'spec', 
             label: 'waPC Protocal Details', 
             position: 'right'
           },
