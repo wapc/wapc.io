@@ -36,7 +36,7 @@ WaPC has host implementations for Rust, Go, Node.js, and browser environments an
 
 </div>
 
-<h2 >Quickstart</h2>
+<h2>Quickstart</h2>
 
 export const os = () => {
   const isBrowser = useIsBrowser();
@@ -156,20 +156,18 @@ $ go mod tidy
 
 <h2>The waPC tool suite</h2>
 
-
-
 <h3>The waPC protocol</h3>
 The core of waPC is a protocol for communicating into and out of WebAssembly.
 
-Use waPC for everything from small libraries to [distributed application platforms](https://wasmcloud.com).
+Use waPC for everything from small libraries to distributed application platforms.
 
 <h3>waPC Hosts & Guests</h3>
 waPC hosts manage the lifecycle and communication of WebAssembly guests.
 
 Hosts and guests give you a universal interface for dynamic behavior in both native and WebAssembly.
 
-<h3>WIDL & the waPC CLI</h3>
-Use the WebAssembly Interface Definition Language (WIDL) to define your WebAssembly's schema and the `wapc` CLI to generate all the code except your business logic.
+<h3>Apex code generator</h3>
+Use the [Apex Language](https://apexlang.io) to define your WebAssembly's specification and the `wapc` CLI to generate all the code except your business logic.
 
 
 <h1>How it works</h1>
@@ -181,8 +179,8 @@ Use the WebAssembly Interface Definition Language (WIDL) to define your WebAssem
   <dd>Once initialized with a WebAssembly intepreter and a wasm binary, the wapc-host library can start executing functions in the wasm guest. The host and guest operate over the waPC communication protocol to satisfy bindings for compiled languages. This protocol takes an operation name and input data, serializes it, and calls the receiving waPC method in the wasm guest.</dd>
   <dt>waPC Guest</dt>
   <dd>The wasm binary — built with the wapc-guest bindings — accepts the waPC call, deserializes the input, executes the requested operation by name, serializes the return value, and passes it back over the waPC protocol back to the host.</dd>
-  <dt>WIDL</dt>
-  <dd>Your WIDL definition is the description of your wasm module's interface. It includes the exposed operations, the input types, return types, namespaces, and more. The waPC CLI uses a widl definition to generate Rust, Go, or AssemblyScript code. <a href="https://github.com/wapc/widl-spec">(see more)</a></dd>
+  <dt>Apex</dt>
+  <dd>Your Apex definition is the description of your wasm module's interface. It includes the exposed operations, the input types, return types, namespaces, and more. The waPC CLI uses Apex definitions to generate Rust, Go, or AssemblyScript code. <a href="https://apexlang.io">(see more)</a></dd>
   <dt>waPC CLI</dt>
   <dd>The waPC command line tool automates the process of creating new projects and generating waPC-compliant integration code.</dd>
 </dl>

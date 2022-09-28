@@ -20,27 +20,17 @@ sidebar_position: 1
 - [AssemblyScript](https://github.com/wapc/as-guest)
 - [Zig](https://github.com/wapc/wapc-guest-zig)
 
-## WIDL
+## Apex
 
-- [WIDL specification](https://github.com/wapc/widl-spec)
-- [WIDL parser](https://github.com/wapc/widl-js)
-- [Code generator](https://github.com/wapc/widl-codegen-js)
+- [Getting started](https://apexlang.io/docs/getting-started)
+- [Apex specification](https://apexlang.io/docs/specification)
+- [Apex parser](https://github.com/apexlang/apex-js)
+- [Apex validator](https://apexlang.github.io/ast-viewer)
 
 ## Other links
 
 ### Projects built off waPC
 
-- [Vino](https://vino.dev)
+- [Candle](https://candle.dev)
 - [Kubewarden](https://kubewarden.io)
 - [Submit yours](https://github.com/wapc/wapc.io/edit/main/content/en/docs/_index.md)
-
-### Community tools
-
-- [WIDL Validator](https://jsoverson.github.io/widl-validator/)
-- [Online waPC loader](https://vino.dev/wasm/loader/)
-
-### Tutorials / Articles
-
-- [Building WebAssembly platforms with waPC](https://vino.dev/blog/building-webassembly-platforms-with-wapc/)
-- [Getting started with waPC and WebAssembly](https://vino.dev/blog/getting-started-with-wapc-and-webassembly/)
-- [Building a waPC host in nodejs](https://vino.dev/blog/building-a-wapc-host-in-nodejs/)

@@ -4,9 +4,9 @@ import styles from './styles.module.css';
 import Icon from "@material-ui/core/Icon";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import useIsBrowser from '@docusaurus/useIsBrowser';
 
 const FeatureList = [
-
   {
     title: '<span style="text-decoration: underline;">The waPC Protocol',
     icon: 'settings',
@@ -28,11 +28,11 @@ const FeatureList = [
     ),
   },
   {
-    title: '<span style="text-decoration: underline;">WIDL & the waPC CLI',
+    title: '<span style="text-decoration: underline;">Apex & the waPC CLI',
     icon: 'handyman',    
     description: (
       <>
-      Use the WebAssembly Interface Definition Language (WIDL) to define your WebAssembly’s schema and the wapc CLI to generate all the code except your business logic.
+      Use the <a href="https://apexlang.io">Apex Language</a> to define your WebAssembly's specification and generate all the code except your business logic.
       </>
     ),
   },
@@ -40,58 +40,44 @@ const FeatureList = [
 
 const StepsList = [
   {
-    title: '<span>Step 1: Install the wapc CLI',
+    title: '<span>Step 1: Install the Apex CLI',
     description: (<>
    <div class="col">
     <div class="row section">
       <div class="step">
         <div class="install step-details">
-          <Tabs>
-            <TabItem value="windows" label='Windows' Default>
-            <div class="install step-details">
-          <div class="code-toolbar">
-            <pre class="language-en"><code class=" language-en">powershell -Command "iwr -useb https://raw.githubusercontent.com/wapc/cli/master/install/install.ps1 | iex"
-            </code></pre>
-            <div class="toolbar">
-              <div class="toolbar-item"><button>Copy</button></div>
-            </div>
-          </div>
-        </div>
+          <Tabs
+            values={[
+              {label: 'Windows', value: 'windows'},
+              {label: 'MacOS', value: 'macos'},
+              {label: 'Linux', value: 'linux'},
+              {label: 'Homebrew', value: 'homebrew'},
+            ]}>
+            <TabItem value="windows">
+              <div class="code-toolbar">
+                <pre class="language-en"><code class=" language-en">
+                powershell -Command "iwr -useb https://apexlang.io/install.ps1 | iex"</code></pre>
+              </div>
             </TabItem>
-            <TabItem value="macos" label='MacOS' Default>
-            <div class="install step-details">
-          <div class="code-toolbar">
-            <pre class="language-en"><code class=" language-en">$ curl -fsSL https://raw.githubusercontent.com/wapc/cli/master/install/install.sh | /bin/bash
-            </code></pre>
-            <div class="toolbar">
-              <div class="toolbar-item"><button>Copy</button></div>
-            </div>
-          </div>
-        </div>
+            <TabItem value="macos">
+              <div class="code-toolbar">
+                <pre class="language-en"><code class=" language-en">
+                curl -fsSL https://apexlang.io/install.sh | /bin/bash</code></pre>
+              </div>
             </TabItem>
-            <TabItem value="linux" label='Linux' Default>
-            <div class="install step-details">
-          <div class="code-toolbar">
-            <pre class="language-en"><code class=" language-en">$ wget -q https://raw.githubusercontent.com/wapc/cli/master/install/install.sh -O - | /bin/bash
-            </code></pre>
-            <div class="toolbar">
-              <div class="toolbar-item"><button>Copy</button></div>
-            </div>
-          </div>
-        </div>
+            <TabItem value="linux">
+              <div class="code-toolbar">
+                <pre class="language-en"><code class=" language-en">
+                wget -q https://apexlang.io/install.sh -O - | /bin/bash</code></pre>
+              </div>
             </TabItem>
-            <TabItem value="homebrew" label='Homebrew' Default>
-            <div class="install step-details">
-          <div class="code-toolbar">
-            <pre class="language-en"><code class=" language-en">$ brew install wapc/tap/wapc
-            </code></pre>
-            <div class="toolbar">
-              <div class="toolbar-item"><button>Copy</button></div>
-            </div>
-          </div>
-        </div>
+            <TabItem value="homebrew">
+              <div class="code-toolbar">
+                <pre class="language-en"><code class=" language-en">
+                brew install apexlang/tap/apex</code></pre>
+              </div>
             </TabItem>
-          </Tabs> 
+          </Tabs>
          </div>
       </div>
     </div>
@@ -109,20 +95,18 @@ const StepsList = [
         <TabItem value="assemblyscript" label="AssemblyScript" default>
         <div class="install step-details">
           <div class="code-toolbar">
-            <pre class="language-en"><code class=" language-en">$ wapc new assemblyscript hello_world_as</code></pre>
-            <div class="toolbar">
-              <div class="toolbar-item"><button>Copy</button></div>
-            </div>
+            <pre class="language-en"><code class=" language-en">
+            apex new @wapc/assemblyscript hello_world_as<br/>
+            cd hello_world_as</code></pre>
           </div>
         </div>
         </TabItem>
         <TabItem value="rust" label="Rust">
         <div class="install step-details">
           <div class="code-toolbar">
-            <pre class="language-en"><code class=" language-en">$ wapc new rust hello_world_rust</code></pre>
-            <div class="toolbar">
-              <div class="toolbar-item"><button>Copy</button></div>
-            </div>
+            <pre class="language-en"><code class=" language-en">
+            apex new @wapc/rust hello_world_rust<br/>
+            cd hello_world_rust</code></pre>
           </div>
         </div>
         </TabItem>
@@ -130,14 +114,8 @@ const StepsList = [
         <div class="install step-details">
           <div class="code-toolbar">
             <pre class="language-en"><code class=" language-en">
-            $ wapc new tinygo hello_world_tinygo <br/>
-            $ cd hello_world_tinygo <br/>
-            $ make codegen <br/>
-            $ go mod tidy
-              </code></pre>
-            <div class="toolbar">
-              <div class="toolbar-item"><button>Copy</button></div>
-            </div>
+            apex new @wapc/tinygo hello_world_tinygo<br/>
+            cd hello_world_tinygo</code></pre>
           </div>
         </div>
         </TabItem>
@@ -152,15 +130,13 @@ const StepsList = [
       <>
         <div class="install step-details">
           <div class="code-toolbar">
-            <pre class="language-en"><code class=" language-en">$ make</code></pre>
-            <div class="toolbar">
-              <div class="toolbar-item"><button>Copy</button></div>
-            </div>
+            <pre class="language-en"><code class=" language-en">make</code></pre>
           </div>
         </div>
       </>
     ),
   },
+  /*
   {
     title: '<span>Step 4: Run',  
     description: (
@@ -248,7 +224,7 @@ const StepsList = [
 </div>
 </>
     ),
-  },
+  },*/
 ];
 
 const ImageList = [
@@ -267,11 +243,8 @@ const BodyList = [
       <b><dt>waPC Guest</dt></b>
       <dd>The wasm binary — built with the wapc-guest bindings — accepts the waPC call, deserializes the input, executes the requested operation by name, serializes the return value, and passes it back over the waPC protocol back to the host.</dd>
       <br/>
-      <b><dt>WIDL</dt></b>
-      <dd>Your WIDL definition is the description of your wasm module's interface. It includes the exposed operations, the input types, return types, namespaces, and more. The waPC CLI uses a widl definition to generate Rust, Go, or AssemblyScript code. <a href="https://github.com/wapc/widl-spec">(see more)</a></dd>
-      <br/>
-      <b><dt>waPC CLI</dt></b>
-      <dd>The waPC command line tool automates the process of creating new projects and generating waPC-compliant integration code.</dd>
+      <b><dt>Apex</dt></b>
+      <dd>Your Apex definition is the description of your wasm module's interface. It includes the exposed operations, the input types, return types, namespaces, and more. The waPC CLI uses Apex definitions to generate Rust, Go, or AssemblyScript code. <a href="https://apexlang.io">(see more)</a></dd>
       </>
     ),
   },
@@ -314,18 +287,6 @@ function Steps({title, description}) {
       </div>
     </div>
   );
-}
-
-export const os = () => {
-  const isBrowser = useIsBrowser();
-  const platform = isBrowser ? navigator.platform : '';
-  if (platform.substring('Mac') != 1) {
-    return "macos"
-  }
-  if (platform.substring('Linux') != 1) {
-    return "linux"
-  }
-  return "windows"
 }
 
 export default function HomepageFeatures() {
