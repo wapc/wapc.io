@@ -44,7 +44,7 @@ function HomepageHeader() {
         <h1 className={clsx('hero__title', styles.heroTitle)}>{siteConfig.title}</h1>
         <div className={clsx('hero__subtitle', styles.heroSubtitle)}>
           <p className={styles.tagLine}>
-            Cloud applications <span className={styles.separatorText}>made</span>
+            WebAseembly plug-ins <span className={styles.separatorText}>made</span>
             <Typer/>
           </p>
           <p>The waPC suite gives you the tools to build <strong>dynamic</strong> applications with <a href="https://webassembly.org/" target="_blank">WebAssembly</a>.</p>
@@ -58,8 +58,8 @@ function HomepageHeader() {
           </Link>&nbsp;&nbsp;
           <Link
             className="button button--primary button--lg"
-            to="https://github.com/wapc/cli">
-            Download
+            to="docs/spec">
+            Specification
           </Link>
         </div>
       </div>
