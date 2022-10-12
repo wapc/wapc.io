@@ -184,7 +184,7 @@ Some day we'll probably see a single language dominate the WebAssembly landscape
 
 ## Running your wasm file
 
-Head on over to our [waPC loader](/wasm/loader/) and load your wasm file from disk. Fill in your operation (`toUppercase` or `toLowercase` if you're following along) and the input data (e.g. `{"name": "Samuel Clemens"}`) and press `Run`. Hopefully all goes well and you'll have the result show up in the `Result:` box along with some status logging down below.
+Head on over to our [waPC loader](/blog/getting-started.md) and load your wasm file from disk. Fill in your operation (`toUppercase` or `toLowercase` if you're following along) and the input data (e.g. `{"name": "Samuel Clemens"}`) and press `Run`. Hopefully all goes well and you'll have the result show up in the `Result:` box along with some status logging down below.
 
 You should see something similar to this:
 

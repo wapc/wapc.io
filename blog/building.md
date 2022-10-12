@@ -33,13 +33,13 @@ WaPC is great for platform builders but covers common use cases just as well. Ev
 
 If you write Rust and want to target the web browser alone, the [wasm-bindgen](https://github.com/rustwasm/wasm-bindgen) project is mature and tailored specifically to this use case. WaPC is more generic. WaPC is better suited for building cross-platform applications than fast browser code.
 
-WaPC has host implementations in [Rust](github.com/wapc/wapc-rust), [Go](https://github.com/wapc/wapc-go), and [JavaScript](https://github.com/wapc/wapc-js) ([nodejs](https://www.npmjs.com/package/@wapc/host) + [browser](https://unpkg.com/@wapc/host@0.0.1/dist/index.bundle.js)) and guest SDKs for [Rust](https://github.com/wapc/wapc-guest-rust), [TinyGo](https://github.com/wapc/wapc-guest-tinygo), [AssemblyScript](https://github.com/wapc/as-guest), and [Zig](https://github.com/wapc/wapc-guest-zig). If you're looking for the "portable" part of WebAssembly, waPC is for you. If you're looking to make lightning fast web application, wasm-bindgen is forging the path there.
+WaPC has host implementations in [Rust](https://github.com/wapc/wapc-rs), [Go](https://github.com/wapc/wapc-go), and [JavaScript](https://github.com/wapc/wapc-js) ([nodejs](https://www.npmjs.com/package/@wapc/host) + [browser](https://unpkg.com/@wapc/host@0.0.1/dist/index.bundle.js)) and guest SDKs for [Rust](https://github.com/wapc/wapc-guest-rust), [TinyGo](https://github.com/wapc/wapc-guest-tinygo), [AssemblyScript](https://github.com/wapc/as-guest), and [Zig](https://github.com/wapc/wapc-guest-zig). If you're looking for the "portable" part of WebAssembly, waPC is for you. If you're looking to make lightning fast web application, wasm-bindgen is forging the path there.
 
 Both wasm-bindgen and waPC are made of layers that could complement each other, but they aren't made to coexist at the moment.
 
 ### The waPC suite
 
-_Do you learn better by copy/pasting code and running things yourself? Try heading to [Getting started with waPC](/blog/getting-started-with-wapc-and-webassembly/) and use this post as a reference when you need it._
+_Do you learn better by copy/pasting code and running things yourself? Try heading to [Getting started with waPC](/blog/getting-started/) and use this post as a reference when you need it._
 
 #### The waPC protocol
 
@@ -47,7 +47,7 @@ The waPC protocol is a handful of complementary host and guest methods that act 
 
 #### waPC Hosts
 
-A waPC host is the native implementation that loads and initializes a WebAssembly guest and makes requests over the waPC protocol. WaPC has host implementations for [Rust](github.com/wapc/wapc-rust), [Go](https://github.com/wapc/wapc-go), and [JavaScript](https://github.com/wapc/wapc-js). If you don't see your platform, the protocol is small and you could create a host implementation in a day or two. This is another reason we committed to waPC, each layer of the technology revolves around a dense but understandable core.
+A waPC host is the native implementation that loads and initializes a WebAssembly guest and makes requests over the waPC protocol. WaPC has host implementations for [Rust](https://github.com/wapc/wapc-rs), [Go](https://github.com/wapc/wapc-go), and [JavaScript](https://github.com/wapc/wapc-js). If you don't see your platform, the protocol is small and you could create a host implementation in a day or two. This is another reason we committed to waPC, each layer of the technology revolves around a dense but understandable core.
 
 #### waPC Guests
 

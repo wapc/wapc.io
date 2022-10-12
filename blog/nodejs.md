@@ -163,7 +163,7 @@ const decoded = decode(result);
 console.log(`Result: ${decoded}`);
 ```
 
-In the previous tutorial we built a waPC guest that exposed two operations, `toUppercase` and `toLowercase`. If you don't have a waPC guest wasm file handy, download the tutorial result here: [wapc_tutorial.wasm](/wasm/wapc_tutorial.wasm)
+In the previous tutorial we built a waPC guest that exposed two operations, `toUppercase` and `toLowercase`. If you don't have a waPC guest wasm file handy, download the tutorial result here: [wapc_tutorial.wasm](/blog/getting-started.md)
 
 Run our nodejs host with the command `node index.js` and pass it three arguments: your wasm file (e.g. `wapc_tutorial.wasm`), the operation to execute (e.g. `toUppercase`), and a JSON payload (e.g. `'{"name":"Samuel Clemens"}'`).
 
