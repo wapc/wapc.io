@@ -286,7 +286,7 @@ export default function HomepageFeatures() {
                   >
                     <div class="form-floating mb-3">
                       <b><label for="wasmFile" class="form-label">WASM File location: </label></b>
-                      <input class="form-control" type="file" id="wasmFile" />
+                      <input class="form-control" className={styles.textspace} type="file" id="wasmFile" />
                     </div>
                   </div>
                 </div>
@@ -294,14 +294,14 @@ export default function HomepageFeatures() {
               </div>
               <div class='form-floating mb-3'>
                 <b><label for="operation" class="form-label">waPC Operation: </label><br/></b>
-                <input type="text" id="operation" class="form-control" value={operation} />
+                <input type="text" id="operation" class="form-control" className={styles.textspace} placeholder={operation} />
               </div>
               <br/>
               <div class="form-floating mb-3">
                 <b><label for="input" class="form-label">Input data (as JSON):</label><br/></b>
-                <textarea id="input" class="form-control text-monospace">{input}</textarea>
+                <textarea id="input" class="form-control text-monospace" className={styles.textspace}>{input}</textarea>
               </div><br/>
-              <button class="w-100 btn btn-lg btn-primary" type="submit">Run</button>
+              <button class="button button--primary button--lg" type="submit">Run</button>
               <hr class="my-4" />
               <h4>Result:</h4>
               <div id="result" class="text-monospace"><p>{result}</p></div>
