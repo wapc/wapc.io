@@ -1,26 +1,49 @@
 {
   "name": "wapc-io",
-  "version": "0.0.1",
-  "description": "waPC website and technical documentation.",
-  "main": "none.js",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "docusaurus": "docusaurus",
+    "start": "docusaurus start",
+    "build": "docusaurus build",
+    "swizzle": "docusaurus swizzle",
+    "deploy": "docusaurus deploy",
+    "clear": "docusaurus clear",
+    "serve": "docusaurus serve",
+    "write-translations": "docusaurus write-translations",
+    "write-heading-ids": "docusaurus write-heading-ids"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/wapc/wapc.io.git"
+  "dependencies": {
+    "@docusaurus/core": "2.1.0",
+    "@docusaurus/preset-classic": "2.1.0",
+    "@material-ui/core": "^4.12.4",
+    "@mdx-js/react": "^1.6.22",
+    "clsx": "^1.2.1",
+    "prism-react-renderer": "^1.3.5",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/wapc/wapc.io/issues"
-  },
-  "homepage": "https://github.com/wapc/wapc.io#readme",
-  "dependencies": {},
   "devDependencies": {
-    "autoprefixer": "^10.4.12",
-    "netlify-cli": "^12.0.7",
-    "postcss": "^8.4.17",
+    "@docusaurus/module-type-aliases": "2.1.0",
+    "@msgpack/msgpack": "^2.8.0",
+    "@wapc/host": "^0.0.3",
+    "autoprefixer": "^10.4.8",
+    "postcss": "^8.4.16",
     "postcss-cli": "^10.0.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.5%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "engines": {
+    "node": ">=16.14"
   }
 }
