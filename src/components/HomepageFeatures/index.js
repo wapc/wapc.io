@@ -174,45 +174,41 @@ export default function HomepageFeatures() {
     {
       title: '<span>Step 1: Install the Apex CLI',
       description: (<>
-        <div class="col">
-          <div class="row section">
-            <div class="step">
+        <div class="install step-details">
+          <Tabs>
+            <TabItem value="windows" label="Windows" default>
               <div class="install step-details">
-                <Tabs
-                  values={[
-                    { label: 'Windows', value: 'windows' },
-                    { label: 'MacOS', value: 'macos' },
-                    { label: 'Linux', value: 'linux' },
-                    { label: 'Homebrew', value: 'homebrew' },
-                  ]}>
-                  <TabItem value="windows">
-                    <div class="code-toolbar">
-                      <pre class="language-en"><code class=" language-en">
-                        powershell -Command "iwr -useb https://apexlang.io/install.ps1 | iex"</code></pre>
-                    </div>
-                  </TabItem>
-                  <TabItem value="macos">
-                    <div class="code-toolbar">
-                      <pre class="language-en"><code class=" language-en">
-                        curl -fsSL https://apexlang.io/install.sh | /bin/bash</code></pre>
-                    </div>
-                  </TabItem>
-                  <TabItem value="linux">
-                    <div class="code-toolbar">
-                      <pre class="language-en"><code class=" language-en">
-                        wget -q https://apexlang.io/install.sh -O - | /bin/bash</code></pre>
-                    </div>
-                  </TabItem>
-                  <TabItem value="homebrew">
-                    <div class="code-toolbar">
-                      <pre class="language-en"><code class=" language-en">
-                        brew install apexlang/tap/apex</code></pre>
-                    </div>
-                  </TabItem>
-                </Tabs>
+                <div class="code-toolbar">
+                  <pre class="language-en"><code class=" language-en">
+                    powershell -Command "iwr -useb https://apexlang.io/install.ps1 | iex"</code></pre>
+                </div>
               </div>
-            </div>
-          </div>
+            </TabItem>
+            <TabItem value="macos" label="MacOS" default>
+              <div class="install step-details">
+                <div class="code-toolbar">
+                  <pre class="language-en"><code class=" language-en">
+                    curl -fsSL https://apexlang.io/install.sh | /bin/bash</code></pre>
+                </div>
+              </div>
+            </TabItem>
+            <TabItem value="linux" label="Linux" default>
+              <div class="install step-details">
+                <div class="code-toolbar">
+                  <pre class="language-en"><code class=" language-en">
+                    wget -q https://apexlang.io/install.sh -O - | /bin/bash</code></pre>
+                </div>
+              </div>
+            </TabItem>
+            <TabItem value="homebrew" label="Homebrew" default>
+              <div class="install step-details">
+                <div class="code-toolbar">
+                  <pre class="language-en"><code class=" language-en">
+                    brew install apexlang/tap/apex</code></pre>
+                </div>
+              </div>
+            </TabItem>
+          </Tabs>
         </div>
       </>
       ),
@@ -290,17 +286,17 @@ export default function HomepageFeatures() {
                     </div>
                   </div>
                 </div>
-                <div class="divider"></div><br/>
+                <div class="divider"></div><br />
               </div>
               <div class='form-floating mb-3'>
-                <b><label for="operation" class="form-label">waPC Operation: </label><br/></b>
+                <b><label for="operation" class="form-label">waPC Operation: </label><br /></b>
                 <input type="text" id="operation" class="form-control" className={styles.textspace} placeholder={operation} />
               </div>
-              <br/>
+              <br />
               <div class="form-floating mb-3">
-                <b><label for="input" class="form-label">Input data (as JSON):</label><br/></b>
+                <b><label for="input" class="form-label">Input data (as JSON):</label><br /></b>
                 <textarea id="input" class="form-control text-monospace" className={styles.textspace}>{input}</textarea>
-              </div><br/>
+              </div><br />
               <button class="button button--primary button--lg" type="submit">Run</button>
               <hr class="my-4" />
               <h4>Result:</h4>
@@ -367,12 +363,13 @@ export default function HomepageFeatures() {
 
   function Steps({ title, description }) {
     return (
-      <div className={clsx('col col--6')}>
-        <div className="padding-horiz--md">
+        <div className={styles.stepslist}>
+          <div>
           <h3 dangerouslySetInnerHTML={{ __html: title }}></h3>
-          <div>{description}</div>
+          <div className={styles.codetext}>{description}</div>
+          <br></br>
+          </div>
         </div>
-      </div>
     );
   }
 
@@ -386,9 +383,11 @@ export default function HomepageFeatures() {
           <br />
         </div>
         <br />
-        {StepsList.map((props, idx) => (
-          <Steps key={idx} {...props} />
-        ))}
+        <div>
+          {StepsList.map((props, idx) => (
+            <Steps key={idx} {...props} />
+          ))}
+        </div>
         <div className={styles.break}>
           <br />
           <h1 className="text--center">The waPC tool suite</h1>

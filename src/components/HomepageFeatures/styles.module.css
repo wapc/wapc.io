@@ -41,6 +41,16 @@
 }
 
 [data-theme='dark'] .textspace {
-  background-color: #363434;
+  background-color: #343435;
   color: white;
+}
+
+.stepslist {
+  display: flex;
+  justify-content: center;
+}
+
+.codetext {
+  width:max-content;
+  min-width: 675px;
 }
