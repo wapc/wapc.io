@@ -27,7 +27,7 @@
     "@docusaurus/module-type-aliases": "2.1.0",
     "@msgpack/msgpack": "^2.8.0",
     "@wapc/host": "^0.0.3",
-    "autoprefixer": "^10.4.8",
+    "autoprefixer": "^10.4.13",
     "postcss": "^8.4.16",
     "postcss-cli": "^10.0.0"
   },
