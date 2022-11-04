@@ -1,0 +1,78 @@
+/**
+ * CSS files with the .module.css suffix will be treated as CSS modules
+ * and scoped locally.
+ */
+
+.heroBanner {
+  background-color: none;
+  background: url("/static/img/hero-bg.jpg")repeat-x 50%;
+  background-size: 100% 100%;
+  border-bottom: 5px #6250E7 solid;
+  padding: 4rem 0;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+}
+
+[data-theme='light'] .heroBanner {
+  color: black;
+}
+
+.heroTitle {
+  text-indent: -9000px;
+  width: 400px;
+  height: 400px;
+  margin-right: 10rem;
+  float: left;
+  background-image: url("@site/static/img/logos/wapc-logo.svg");
+  background-size:auto;
+  background-repeat: no-repeat;
+}
+
+[data-theme='dark'] .heroTitle {
+  background-image: url("@site/static/img/logos/wapc-logo.svg");
+}
+
+.tagLine {
+  font-size: 3rem;
+}
+
+.separatorText {
+  color: #449496;
+}
+
+.buttons {
+  display: flex;
+  align-items: left;
+  justify-content: left;
+}
+
+[data-theme='dark'] .button {
+  color: white;
+}
+
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    padding: 2rem;
+  }
+
+  .heroTitle {
+    width: 250px;
+    height: 250px;
+    text-align: center;
+    margin: 0 auto;
+    float: none;
+    position: static;
+  }
+
+  .tagLine {
+    margin-top: 2rem;
+    font-size: 2rem;
+  }
+
+  .buttons {
+    align-items: center;
+    justify-content: center;
+  }
+  
+}

@@ -1,0 +1,56 @@
+.features {
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+  width: 100%;
+}
+
+.featureSvg {
+  height: 200px;
+  width: 200px;
+}
+
+.hiw-img {
+  height: 100%;
+  width: 100%;
+}
+
+.break {
+  background-color:#6250E7;
+}
+
+.break h1 {
+  margin: 0;
+  color: white;
+}
+
+.textspace {
+  background-color: #f0f3f5;
+  color: black;
+  padding: 1em;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  outline: none;
+  font-family: "Heebo", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.4;
+  width: 100%;
+  height: 100%;
+  
+}
+
+[data-theme='dark'] .textspace {
+  background-color: #343435;
+  color: white;
+}
+
+.stepslist {
+  display: flex;
+  justify-content: center;
+}
+
+.codetext {
+  width:max-content;
+  min-width: 675px;
+}

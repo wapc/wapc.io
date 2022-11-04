@@ -1,0 +1,233 @@
+
+<div class="full wapc-loader">
+  <form class="p-5 border rounded-3 bg-light" id="form">
+    <div class='{{ if (.Get "url") }}display-none{{end}}'>
+    <ul class="nav nav-pills" id="tabs" role="tablist">
+      <li class="nav-item" role="presentation">
+        <a
+          class="nav-link active"
+          id="file-tab"
+          data-toggle="tab"
+          href="#file"
+          role="tab"
+          aria-controls="file"
+          aria-selected="true"
+          >From local file</a
+        >
+      </li>
+
+       <li class="nav-item" role="presentation">
+        <a
+          class="nav-link "
+          id="url-tab"
+          data-toggle="tab"
+          href="#url"
+          role="tab"
+          aria-controls="url"
+          aria-selected="false"
+          >From URL</a
+        >
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div
+        class="tab-pane fade show active"
+        id="file"
+        role="tabpanel"
+        aria-labelledby="file-tab"
+      >
+        <div class="form-floating mb-3">
+          <label for="wasmFile" class="form-label">WASM File location</label>
+          <input class="form-control" type="file" id="wasmFile" />
+        </div>
+      </div>
+      <div
+        class="tab-pane fade"
+        id="url"
+        role="tabpanel"
+        aria-labelledby="url-tab"
+      >
+        <div class="form-floating mb-3">
+          <label for="wasmUrl" class="form-label">URL</label>
+          <input
+            class="form-control"
+            type="text"
+            id="wasmUrl"
+            value='{{ if (.Get "url") }}{{.Get "url"}}{{else}}{{end}}'
+          />
+        </div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    </div>
+    <div class='form-floating mb-3'>
+      <label for="operation" class="form-label">waPC operation</label>
+      <input type="text" id="operation" class="form-control" {{ if (.Get "operation") }}value='{{.Get "operation"}}' disabled{{else}} value="sayHello" {{end}}/>
+    </div>
+    <div class="form-floating mb-3">
+      <label for="input" class="form-label">input data (as JSON)</label>
+      <textarea id="input" class="form-control text-monospace">
+{{ if (.Get "input") }}{{.Get "input"}}{{else}}{ "name" : "Sam Clemens" }{{end}}</textarea
+      >
+    </div>
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Run</button>
+    <hr class="my-4" />
+    <h4>Result:</h4>
+    <div id="result" class="text-monospace"></div>
+    <hr />
+    <div id="log"></div>
+  </form>
+</div>
+
+<script src="https://unpkg.com/@msgpack/msgpack@2.5.1/dist.es5+umd/msgpack.min.js"></script>
+<script src="https://unpkg.com/@wapc/host@0.0.1/dist/index.bundle.js"></script>
+<script>
+  const logContainer = document.getElementById("log");
+
+  function log(msg, className, helper) {
+    console.log(msg);
+    const container = document.createElement("p");
+    container.innerText = msg;
+    logContainer.appendChild(container);
+    if (className) container.classList.add(className);
+    if (helper) {
+      const helperSpan = document.createElement("span");
+      helperSpan.innerHTML = helper;
+      container.appendChild(helperSpan);
+    }
+    logContainer.scrollTop = logContainer.scrollHeight;
+  }
+
+  logContainer.addEventListener("click", (evt) => {
+    if (evt.target.classList.contains("helper")) {
+      document.getElementById("input").value = jsonPretty(
+        JSON.parse(evt.target.dataset.value)
+      );
+    }
+  });
+
+  function hostCall(...args) {
+    log(`Host operation called with args: [${args.join(",")}]`);
+    log(`Throwing error`);
+    throw new Error("Host calls unimplemented");
+  }
+
+  async function getWapcHost() {
+    const activeTab = document.querySelector("#tabs .active");
+    if (activeTab.id === "file-tab") {
+      const wasmFile = document.getElementById("wasmFile").files[0];
+      if (!wasmFile) {
+        log("No file selected, nothing to load", "error");
+        return;
+      }
+      log("Fetching wasm bytes from file system");
+      const bytes = await new Promise((res, rej) => {
+        const reader = new FileReader();
+        reader.addEventListener("load", (evt) => {
+          const arrayBuffer = evt.target.result;
+          const bytes = new Uint8Array(arrayBuffer);
+          log(`Read ${bytes.length} bytes from file system`);
+          res(bytes);
+        });
+        reader.addEventListener("error", (err) => {
+          log(`Could not read wasm file: ${err}`);
+          rej(err);
+        });
+        reader.readAsArrayBuffer(wasmFile);
+      });
+      log("Instantiating waPCHost with the wasm file");
+      return waPC.instantiate(bytes, hostCall);
+    } else {
+      const wasmUrl = document.getElementById("wasmUrl").value;
+
+      log(`Fetching wasm from URL ${wasmUrl}`);
+      const wasm = await fetch(wasmUrl);
+      log("Fetched URL");
+      if (WebAssembly.instantiateStreaming) {
+        log("Instantiating waPCHost with the response");
+        try {
+          return waPC.instantiateStreaming(wasm, hostCall);
+        } catch (e) {
+          log(`Could not instantiate host from response: ${e.message}`, "error");
+        }
+      } else {
+        log("instantiateStreaming unsupported, waiting for full response.");
+        try {
+          const response = await wasm;
+          const bytes = new Uint8Array(await response.arrayBuffer());
+          return waPC.instantiate(bytes, hostCall);
+        } catch (e) {
+          log(`Could not instantiate host: ${e.message}`, "error");
+        }
+      }
+    }
+  }
+  function jsonPretty(obj) {
+    return JSON.stringify(obj, null, 2);
+  }
+  function jsonTerse(obj) {
+    return JSON.stringify(obj);
+  }
+
+  document.getElementById("form").addEventListener(
+    "submit",
+    async (evt) => {
+      evt.preventDefault();
+      const op = document.getElementById("operation").value;
+      const host = await getWapcHost();
+      if (!host) return;
+      log("Host instantiated");
+
+      const input = document.getElementById("input");
+      let json = {};
+      try {
+        json = JSON.parse(input.value);
+        input.value = jsonPretty(json);
+      } catch (e) {
+        log(`Could not parse input json: ${e}`, "error");
+        return;
+      }
+
+      const payload = MessagePack.encode(json);
+
+      log(`Invoking '${op}' with ${payload.length} byte payload`);
+      try {
+        const result = await host.invoke(op, payload);
+        log(`Received ${result.length} byte payload`);
+
+        const decoded = MessagePack.decode(result);
+
+        const resultContainer = document.createElement("p");
+        resultContainer.innerText = decoded;
+        document.getElementById("result").replaceChildren(resultContainer);
+      } catch (e) {
+        log(e.message, "error");
+        if (/expected struct/.test(e.message)) {
+          log(
+            `The most common reason for this error (outside of genuinely bad input) is because you passed a single argument without a wrapper object. E.g. for an operation defined like "echo(msg: string)", instead of passing "hello" as an argument, pass { "msg": "hello" }`
+          );
+        } else if (/No handler/.test(e.message)) {
+          log(
+            `That handler was not exposed to the host. Are you sure you registered the handler in the wapc_init call?`
+          );
+        } else if (/missing field `(.*)`/.test(e.message)) {
+          json[RegExp.$1] = "/*Replace me*/";
+          log(
+            `Your input was missing a field, try adding "${
+              RegExp.$1
+            }" like: ${jsonTerse(json)}.`,
+            "help",
+            ` <button type=button class='helper btn btn-secondary' data-value='${jsonTerse(
+              json
+            )}'>replace</button>`
+          );
+        } else if (/invalid type/.test(e.message)) {
+          log(
+            `The incorrect type was passed to a field, check your operation's signature and try again`
+          );
+        }
+      }
+    },
+    false
+  );
+</script>
