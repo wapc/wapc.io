@@ -8,6 +8,7 @@ import { encode, decode } from '@msgpack/msgpack';
 import * as waPC from '@wapc/host';
 import { useState } from "react";
 import useIsBrowser from '@docusaurus/useIsBrowser';
+import CodeBlock from '@theme/CodeBlock';
 
 
 export const os = () => {
@@ -172,79 +173,54 @@ export default function HomepageFeatures() {
 
   const StepsList = [
     {
-      title: '<span>Step 1: Install the Apex CLI',
+      title: '<span>Step 1: Install <a href="https://github.com/denoland/deno_install" target="_blank">Deno</a> and the Apex CLI',
       description: (<>
         <div class="install step-details">
-          <Tabs>
-            <TabItem value="windows" label="Windows" default>
-              <div class="install step-details">
-                <div class="code-toolbar">
-                  <pre class="language-en"><code class=" language-en">
-                    powershell -Command "iwr -useb https://apexlang.io/install.ps1 | iex"</code></pre>
-                </div>
-              </div>
-            </TabItem>
-            <TabItem value="macos" label="MacOS" default>
-              <div class="install step-details">
-                <div class="code-toolbar">
-                  <pre class="language-en"><code class=" language-en">
-                    curl -fsSL https://apexlang.io/install.sh | /bin/bash</code></pre>
-                </div>
-              </div>
-            </TabItem>
-            <TabItem value="linux" label="Linux" default>
-              <div class="install step-details">
-                <div class="code-toolbar">
-                  <pre class="language-en"><code class=" language-en">
-                    wget -q https://apexlang.io/install.sh -O - | /bin/bash</code></pre>
-                </div>
-              </div>
-            </TabItem>
-            <TabItem value="homebrew" label="Homebrew" default>
-              <div class="install step-details">
-                <div class="code-toolbar">
-                  <pre class="language-en"><code class=" language-en">
-                    brew install apexlang/tap/apex</code></pre>
-                </div>
-              </div>
-            </TabItem>
-          </Tabs>
+          <div class="install step-details">
+              <p>First, make sure you have <a href="https://github.com/denoland/deno_install" target="_blank">Deno</a> installed.
+              Then, use Deno to install the Apex CLI.</p>
+
+              <CodeBlock className="codeBlock" language="shell">deno install -A --unstable -f -n apex https://deno.land/x/apex_cli/apex.ts</CodeBlock>
+          </div>
         </div>
       </>
       ),
     },
-
     {
-      title: '<span>Step 2: Generate a new project',
+      title: '<span>Step 2: Install <a href="https://github.com/wapc/codegen" target="_blank">waPC project templates</a>',
+      description: (
+        <>
+          <div class="install step-details">
+            <CodeBlock className="codeBlock" language="shell">apex install https://deno.land/x/wapc_codegen/templates.ts</CodeBlock>
+            <CodeBlock className="codeBlock" language="shell">INFO Installing @wapc/assemblyscript...<br/>
+INFO Installing @wapc/rust...<br/>
+INFO Installing @wapc/tinygo...</CodeBlock>
+          </div>
+        </>
+      ),
+    },
+    {
+      title: '<span>Step 3: Generate a new project',
       description: (
         <>
           <div class="install step-details">
             <Tabs>
               <TabItem value="assemblyscript" label="AssemblyScript" default>
                 <div class="install step-details">
-                  <div class="code-toolbar">
-                    <pre class="language-en"><code class=" language-en">
-                      apex new @wapc/assemblyscript hello_world_as<br />
-                      cd hello_world_as</code></pre>
+                  <CodeBlock className="codeBlock" language="shell">apex new @wapc/assemblyscript hello_world_as<br />
+                      cd hello_world_as</CodeBlock>
                   </div>
-                </div>
               </TabItem>
               <TabItem value="rust" label="Rust">
                 <div class="install step-details">
-                  <div class="code-toolbar">
-                    <pre class="language-en"><code class=" language-en">
-                      apex new @wapc/rust hello_world_rust<br />
-                      cd hello_world_rust</code></pre>
-                  </div>
+                  <CodeBlock className="codeBlock" language="shell">apex new @wapc/rust hello_world_rust<br />
+                    cd hello_world_rust</CodeBlock>
                 </div>
               </TabItem>
               <TabItem value="tinygo" label="TinyGo">
                 <div class="install step-details">
-                  <div class="code-toolbar">
-                    <pre class="language-en"><code class=" language-en">
-                      apex new @wapc/tinygo hello_world_tinygo<br />
-                      cd hello_world_tinygo</code></pre>
-                  </div>
+                  <CodeBlock className="codeBlock" language="shell">apex new @wapc/tinygo hello_world_tinygo<br />
+                      cd hello_world_tinygo</CodeBlock>
                 </div>
               </TabItem>
             </Tabs>
@@ -253,19 +229,17 @@ export default function HomepageFeatures() {
       ),
     },
     {
-      title: '<span>Step 3: Build',
+      title: '<span>Step 4: Build',
       description: (
         <>
           <div class="install step-details">
-            <div class="code-toolbar">
-              <pre class="language-en"><code class=" language-en">make</code></pre>
-            </div>
+            <CodeBlock className="codeBlock" language="shell">apex all</CodeBlock>
           </div>
         </>
       ),
     },
     {
-      title: '<span>Step 4: Run',
+      title: '<span>Step 5: Run',
       description: (
         <>
           <div class="install step-details"></div>
@@ -290,7 +264,7 @@ export default function HomepageFeatures() {
               </div>
               <div class='form-floating mb-3'>
                 <b><label for="operation" class="form-label">waPC Operation: </label><br /></b>
-                <input type="text" id="operation" class="form-control" className={styles.textspace} placeholder={operation} />
+                <input type="text" id="operation" class="form-control" className={styles.textspace} placeholder={operation} value="greeting.v1.Greeter/sayHello" />
               </div>
               <br />
               <div class="form-floating mb-3">
