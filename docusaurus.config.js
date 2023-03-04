@@ -42,7 +42,7 @@ const config = {
           customCss: require.resolve('./src/css/custom.css'),
         },
         gtag: {
-          trackingID: 'G-TTGDVD2844',
+          trackingID: 'G-BG520S2TKM',
           anonymizeIP: true,
         },
       }),
