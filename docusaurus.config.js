@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'waPC.io',
-  tagline: 'Dinosaurs are cool',
+  tagline: 'WebAssembly Procedure Calls',
   url: 'https://wapc.io',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -71,15 +71,15 @@ const config = {
           },
           {
             type: 'doc',
-            docId: 'spec', 
-            label: 'waPC Protocal Details', 
+            docId: 'spec',
+            label: 'Specification',
             position: 'right'
           },
           {
-            to: 'blog', 
-            label: 'Blog', 
+            to: 'blog',
+            label: 'Blog',
             position: 'left'
-          }, 
+          },
         ],
       },
       footer: {
