@@ -12,6 +12,7 @@ sidebar_position: 1
 - [Rust](https://github.com/wapc/wapc-rs)
 - [Go](https://github.com/wapc/wapc-go)
 - [JavaScript](https://github.com/wapc/wapc-js)
+- [Swift](https://github.com/wapc/wapc-swift)
 
 ## waPC Guest Implementations
 
@@ -19,6 +20,7 @@ sidebar_position: 1
 - [TinyGo](https://github.com/wapc/wapc-guest-tinygo)
 - [AssemblyScript](https://github.com/wapc/as-guest)
 - [Zig](https://github.com/wapc/wapc-guest-zig)
+- [Swift](https://github.com/wapc/wapc-guest-swift)
 
 ## Apex
 
